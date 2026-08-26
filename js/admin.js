@@ -419,12 +419,6 @@ function renderApplications(apps) {
   document.querySelectorAll(".resume-btn").forEach((button) => {
     button.addEventListener("click", async () => {
       const token = localStorage.getItem("career_token");
-      const resumeWindow = window.open("about:blank", "_blank");
-
-      if (!resumeWindow) {
-        await showAppNotice("Please allow pop-ups to view resumes.");
-        return;
-      }
 
       try {
         const response = await fetch(
@@ -438,21 +432,17 @@ function renderApplications(apps) {
 
         if (!response.ok) {
           const data = await response.json();
-          resumeWindow.close();
           await showAppNotice(data.message || "Unable to open resume.");
           return;
         }
 
         const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        resumeWindow.location.href = url;
-        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        showResumeViewer(blob, "resume");
       } catch (error) {
         console.error("Resume error:", error);
-        resumeWindow.close();
-          await showAppNotice(
-            error.message || "Unable to open resume. Check the Railway deployment and upload storage.",
-          );
+        await showAppNotice(
+          error.message || "Unable to open resume. Check the Railway deployment and upload storage.",
+        );
       }
     });
   });
@@ -485,6 +475,36 @@ async function updateApplicationStatus(applicationId, status) {
     console.error("Status update error:", error);
     await showAppNotice(error.message);
   }
+}
+
+function showResumeViewer(blob, fileName) {
+  let modal = document.getElementById("resumeViewerModal");
+
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "resumeViewerModal";
+    modal.className = "logout-modal";
+    modal.innerHTML = `
+      <div class="logout-dialog resume-viewer-dialog">
+        <div class="resume-viewer-header">
+          <h2>Resume</h2>
+          <button class="logout-cancel" id="closeResumeViewer" type="button">Close</button>
+        </div>
+        <iframe id="resumeViewerFrame" title="Candidate resume"></iframe>
+        <a id="downloadResume" class="btn btn-primary" download>Download resume</a>
+      </div>`;
+    document.body.appendChild(modal);
+    document.getElementById("closeResumeViewer").addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
+  }
+
+  const url = URL.createObjectURL(blob);
+  modal.querySelector("#resumeViewerFrame").src = url;
+  const download = modal.querySelector("#downloadResume");
+  download.href = url;
+  download.download = fileName || "resume";
+  modal.classList.add("show");
 }
 
 // --------------------

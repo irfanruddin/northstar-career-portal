@@ -236,6 +236,38 @@ textarea:focus-visible {
   text-align: center;
 }
 
+.resume-viewer-dialog {
+  width: min(900px, 100%);
+  height: min(90vh, 900px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.resume-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.resume-viewer-header h2 {
+  margin: 0;
+}
+
+#resumeViewerFrame {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+#downloadResume {
+  align-self: flex-start;
+}
+
 .app-message-dialog .logout-actions button[hidden] {
   display: none;
 }
