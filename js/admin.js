@@ -435,15 +435,20 @@ function renderApplications(apps) {
           alert(data.message || "Unable to open resume.");
           return;
         }
+       const blob = await response.blob();
+const url = URL.createObjectURL(blob);
 
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
+const newTab = window.open();
 
-        window.open(url, "_blank");
+if (newTab) {
+  newTab.location.href = url;
 
-        setTimeout(() => {
-          URL.revokeObjectURL(url);
-        }, 60000);
+  setTimeout(() => {
+    URL.revokeObjectURL(url);
+  }, 60000);
+} else {
+  alert("Please allow pop-ups for this website.");
+}
 
       } catch (error) {
         console.error("Resume error:", error);
