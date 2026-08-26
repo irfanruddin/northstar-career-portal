@@ -450,7 +450,9 @@ function renderApplications(apps) {
       } catch (error) {
         console.error("Resume error:", error);
         resumeWindow.close();
-        await showAppNotice("Unable to open resume.");
+          await showAppNotice(
+            error.message || "Unable to open resume. Check the Railway deployment and upload storage.",
+          );
       }
     });
   });

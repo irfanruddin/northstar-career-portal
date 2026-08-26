@@ -320,12 +320,14 @@ router.get(
         });
       }
 
-      const filePath = path.join(
-        uploadDir,
-        application.resume_path
-      );
+      const fileName = path.basename(application.resume_path);
+      const filePath = path.join(uploadDir, fileName);
+      const legacyFilePath = path.join(__dirname, "../uploads", fileName);
+      const availableFilePath = fs.existsSync(filePath)
+        ? filePath
+        : legacyFilePath;
 
-      if (!fs.existsSync(filePath)) {
+      if (!fs.existsSync(availableFilePath)) {
         return res.status(404).json({
           message: "Resume file not found.",
         });
@@ -338,7 +340,7 @@ router.get(
         ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       };
 
-      res.sendFile(filePath, {
+      res.sendFile(availableFilePath, {
         headers: {
           "Content-Type": contentTypes[extension] || "application/octet-stream",
           "Content-Disposition": `inline; filename="${path.basename(application.resume_name || application.resume_path)}"`,
