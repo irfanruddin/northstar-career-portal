@@ -73,8 +73,7 @@ function isValidPhone(phone) {
 }
 
 function apiUrl(path) {
-  const host = window.location.hostname || "localhost";
-  return `http://${host}:5000${path}`;
+  return `https://northstar-career-portal-production.up.railway.app${path}`;
 }
 
 function esc(value) {
