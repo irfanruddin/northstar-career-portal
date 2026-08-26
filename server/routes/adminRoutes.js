@@ -331,10 +331,19 @@ router.get(
         });
       }
 
-      res.download(
-        filePath,
-        application.resume_name || application.resume_path
-      );
+      const extension = path.extname(application.resume_path).toLowerCase();
+      const contentTypes = {
+        ".pdf": "application/pdf",
+        ".doc": "application/msword",
+        ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      };
+
+      res.sendFile(filePath, {
+        headers: {
+          "Content-Type": contentTypes[extension] || "application/octet-stream",
+          "Content-Disposition": `inline; filename="${path.basename(application.resume_name || application.resume_path)}"`,
+        },
+      });
     } catch (error) {
       console.error(error);
 

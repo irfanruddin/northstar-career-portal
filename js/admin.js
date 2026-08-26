@@ -554,15 +554,17 @@ document.getElementById("jobForm").addEventListener("submit", async (e) => {
 
 document.getElementById("adminLogout").addEventListener("click", logout);
 
-const editJobForm = document.getElementById("editJobForm");
-const cancelEditJob = document.getElementById("cancelEditJob");
+document.addEventListener("DOMContentLoaded", () => {
+  const editJobForm = document.getElementById("editJobForm");
+  const cancelEditJob = document.getElementById("cancelEditJob");
 
-if (editJobForm && cancelEditJob) {
+  if (!editJobForm || !cancelEditJob) return;
+
   editJobForm.addEventListener("submit", saveEditedJob);
   cancelEditJob.addEventListener("click", () => {
     document.getElementById("editJobModal").classList.remove("show");
   });
-}
+});
 
 // START
 initAdmin();
