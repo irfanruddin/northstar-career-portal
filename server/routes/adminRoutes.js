@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const router = express.Router();
+const uploadDir = process.env.UPLOAD_DIR || path.join(__dirname, "../uploads");
 
 // Get all jobs
 router.get("/jobs", authenticateToken, requireAdmin, async (req, res) => {
@@ -320,8 +321,7 @@ router.get(
       }
 
       const filePath = path.join(
-        __dirname,
-        "../uploads",
+        uploadDir,
         application.resume_path
       );
 
