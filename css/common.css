@@ -232,6 +232,14 @@ textarea:focus-visible {
   line-height: 1.5;
 }
 
+.app-message-dialog {
+  text-align: center;
+}
+
+.app-message-dialog .logout-actions button[hidden] {
+  display: none;
+}
+
 .logout-actions {
   display: flex;
   justify-content: center;

@@ -18,11 +18,73 @@ function logout() {
   const modal = document.getElementById("logoutModal");
 
   if (!modal) {
-    alert("Logout confirmation is not available on this page.");
+    showAppNotice("Logout confirmation is not available on this page.");
     return;
   }
 
   modal.classList.add("show");
+}
+
+function getAppModal() {
+  let modal = document.getElementById("appMessageModal");
+
+  if (modal) return modal;
+
+  modal = document.createElement("div");
+  modal.id = "appMessageModal";
+  modal.className = "logout-modal";
+  modal.innerHTML = `
+    <div class="logout-dialog app-message-dialog">
+      <div class="logout-icon" id="appMessageIcon">!</div>
+      <h2 id="appMessageTitle">Notice</h2>
+      <p id="appMessageText"></p>
+      <div class="logout-actions">
+        <button class="logout-cancel" id="appMessageCancel" type="button">Cancel</button>
+        <button class="logout-confirm" id="appMessageConfirm" type="button">Okay</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+  return modal;
+}
+
+function showAppNotice(text, title = "Notice") {
+  const modal = getAppModal();
+  modal.querySelector("#appMessageTitle").textContent = title;
+  modal.querySelector("#appMessageText").textContent = text;
+  modal.querySelector("#appMessageIcon").textContent = "!";
+  modal.querySelector("#appMessageCancel").hidden = true;
+  modal.classList.add("show");
+
+  return new Promise((resolve) => {
+    const close = () => {
+      modal.classList.remove("show");
+      modal.querySelector("#appMessageConfirm").removeEventListener("click", close);
+      resolve();
+    };
+    modal.querySelector("#appMessageConfirm").addEventListener("click", close);
+  });
+}
+
+function showAppConfirm(text, title = "Please confirm") {
+  const modal = getAppModal();
+  modal.querySelector("#appMessageTitle").textContent = title;
+  modal.querySelector("#appMessageText").textContent = text;
+  modal.querySelector("#appMessageIcon").textContent = "?";
+  modal.querySelector("#appMessageCancel").hidden = false;
+  modal.classList.add("show");
+
+  return new Promise((resolve) => {
+    const cancel = () => finish(false);
+    const confirm = () => finish(true);
+    const finish = (result) => {
+      modal.classList.remove("show");
+      modal.querySelector("#appMessageCancel").removeEventListener("click", cancel);
+      modal.querySelector("#appMessageConfirm").removeEventListener("click", confirm);
+      resolve(result);
+    };
+    modal.querySelector("#appMessageCancel").addEventListener("click", cancel);
+    modal.querySelector("#appMessageConfirm").addEventListener("click", confirm);
+  });
 }
 
 function performLogout() {
@@ -73,7 +135,12 @@ function isValidPhone(phone) {
 }
 
 function apiUrl(path) {
-  return `https://northstar-career-portal-production.up.railway.app${path}`;
+  const isLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+  const baseUrl = isLocal
+    ? `http://${window.location.hostname}:5000`
+    : "https://northstar-career-portal-production.up.railway.app";
+
+  return `${baseUrl}${path}`;
 }
 
 function esc(value) {

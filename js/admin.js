@@ -240,7 +240,7 @@ async function saveEditedJob(e) {
     const data = await response.json();
 
     if (!response.ok) {
-      alert(data.message || "Unable to update job.");
+      await showAppNotice(data.message || "Unable to update job.");
       return;
     }
 
@@ -255,7 +255,7 @@ async function saveEditedJob(e) {
   } catch (error) {
     console.error("Edit job error:", error);
 
-    showMessage(message, "Unable to update job.");
+    await showAppNotice("Unable to update job.");
   }
 }
 
@@ -264,7 +264,7 @@ async function saveEditedJob(e) {
 // --------------------
 
 async function deleteJob(jobId) {
-  const confirmed = confirm("Are you sure you want to delete this job?");
+  const confirmed = await showAppConfirm("Are you sure you want to delete this job?", "Delete job?");
 
   if (!confirmed) {
     return;
@@ -287,17 +287,17 @@ async function deleteJob(jobId) {
     const data = await response.json();
 
     if (!response.ok) {
-      alert(data.message || "Unable to delete job.");
+      await showAppNotice(data.message || "Unable to delete job.");
       return;
     }
 
-    alert("Job deleted successfully.");
+    await showAppNotice("Job deleted successfully.", "Job deleted");
 
     await renderAdmin();
   } catch (error) {
     console.error("Delete job error:", error);
 
-    alert("Unable to delete job.");
+    await showAppNotice("Unable to delete job.");
   }
 }
 
@@ -419,55 +419,42 @@ function renderApplications(apps) {
   document.querySelectorAll(".resume-btn").forEach((button) => {
     button.addEventListener("click", async () => {
       const token = localStorage.getItem("career_token");
+      const resumeWindow = window.open("about:blank", "_blank");
+
+      if (!resumeWindow) {
+        await showAppNotice("Please allow pop-ups to view resumes.");
+        return;
+      }
 
       try {
-  // Open the tab immediately while it is still triggered by the button click
-  const newTab = window.open("", "_blank");
+        const response = await fetch(
+          apiUrl(`/api/admin/applications/${button.dataset.id}/resume`),
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
 
-  if (!newTab) {
-    alert("Please allow pop-ups for this website.");
-    return;
-  }
+        if (!response.ok) {
+          const data = await response.json();
+          resumeWindow.close();
+          await showAppNotice(data.message || "Unable to open resume.");
+          return;
+        }
 
-  newTab.document.write("<p>Loading resume...</p>");
-
-  const response = await fetch(
-    apiUrl(`/api/admin/applications/${button.dataset.id}/resume`),
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    },
-  );
-
-  if (!response.ok) {
-    newTab.close();
-
-    const data = await response.json();
-    alert(data.message || "Unable to open resume.");
-    return;
-  }
-
-  const blob = await response.blob();
-  const url = URL.createObjectURL(blob);
-
-  // Navigate the already-open tab to the PDF
-  newTab.location.href = url;
-
-  setTimeout(() => {
-    URL.revokeObjectURL(url);
-  }, 60000);
-
-} catch (error) {
-  console.error("Resume error:", error);
-  alert("Unable to open resume.");
-}
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        resumeWindow.location.href = url;
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      } catch (error) {
+        console.error("Resume error:", error);
+        resumeWindow.close();
+        await showAppNotice("Unable to open resume.");
+      }
     });
   });
 }
-// --------------------
-// UPDATE APPLICATION STATUS
-// --------------------
 
 async function updateApplicationStatus(applicationId, status) {
   const token = localStorage.getItem("career_token");
@@ -477,15 +464,11 @@ async function updateApplicationStatus(applicationId, status) {
       apiUrl(`/api/admin/applications/${applicationId}/status`),
       {
         method: "PUT",
-
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-
-        body: JSON.stringify({
-          status,
-        }),
+        body: JSON.stringify({ status }),
       },
     );
 
@@ -498,8 +481,7 @@ async function updateApplicationStatus(applicationId, status) {
     await renderAdmin();
   } catch (error) {
     console.error("Status update error:", error);
-
-    alert(error.message);
+    await showAppNotice(error.message);
   }
 }
 

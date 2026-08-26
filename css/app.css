@@ -567,6 +567,28 @@ body {
     grid-column: auto;
   }
 
+  #manageJobs .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #manageJobs .form-grid .full,
+  #manageJobs .form-grid > button,
+  #manageJobs .form-grid > .form-message {
+    grid-column: 1 / -1;
+  }
+
+  #manageJobs .form-grid label {
+    gap: 5px;
+    font-size: 0.82rem;
+  }
+
+  #manageJobs .form-grid input,
+  #manageJobs .form-grid select,
+  #manageJobs .form-grid textarea {
+    padding: 11px 10px;
+  }
+
   .application-card {
     align-items: flex-start;
     flex-direction: column;
