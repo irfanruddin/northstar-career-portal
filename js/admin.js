@@ -421,39 +421,47 @@ function renderApplications(apps) {
       const token = localStorage.getItem("career_token");
 
       try {
-        const response = await fetch(
-          apiUrl(`/api/admin/applications/${button.dataset.id}/resume`),
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
+  // Open the tab immediately while it is still triggered by the button click
+  const newTab = window.open("", "_blank");
 
-        if (!response.ok) {
-          const data = await response.json();
-          alert(data.message || "Unable to open resume.");
-          return;
-        }
-       const blob = await response.blob();
-const url = URL.createObjectURL(blob);
+  if (!newTab) {
+    alert("Please allow pop-ups for this website.");
+    return;
+  }
 
-const newTab = window.open();
+  newTab.document.write("<p>Loading resume...</p>");
 
-if (newTab) {
+  const response = await fetch(
+    apiUrl(`/api/admin/applications/${button.dataset.id}/resume`),
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  if (!response.ok) {
+    newTab.close();
+
+    const data = await response.json();
+    alert(data.message || "Unable to open resume.");
+    return;
+  }
+
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+
+  // Navigate the already-open tab to the PDF
   newTab.location.href = url;
 
   setTimeout(() => {
     URL.revokeObjectURL(url);
   }, 60000);
-} else {
-  alert("Please allow pop-ups for this website.");
-}
 
-      } catch (error) {
-        console.error("Resume error:", error);
-        alert("Unable to open resume.");
-      }
+} catch (error) {
+  console.error("Resume error:", error);
+  alert("Unable to open resume.");
+}
     });
   });
 }
