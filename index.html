@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Northstar Careers — Sign In</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main class="auth-layout">
+    <section class="auth-hero">
+      <div class="brand">northstar <span>/ careers</span></div>
+      <div class="hero-copy">
+        <p class="eyebrow">BUILD WHAT MATTERS</p>
+        <h1>Your next<br>chapter starts<br>here.</h1>
+        <p class="hero-description">A considered space for curious developers, thoughtful teams, and work with a lasting impact.</p>
+      </div>
+      <div class="hero-quote">“The right opportunity does not just change your work. It changes what you believe you can make.”</div>
+      <div class="hero-ring ring-one"></div>
+      <div class="hero-ring ring-two"></div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <p class="eyebrow">MEMBER ACCESS</p>
+        <h2>Welcome back.</h2>
+        <p class="muted">Sign in to continue your application.</p>
+
+        <form id="loginForm" class="form-stack" autocomplete="off">
+          <label>Email address
+            <input id="loginEmail" name="login-email" type="email" placeholder="e.g. ***@gmail.com" autocomplete="off" list="loginEmailSuggestions" required>
+          </label>
+          <datalist id="loginEmailSuggestions"></datalist>
+          <div>
+            <div class="label-row">
+              <label for="loginPassword">Password</label>
+              <a href="#" id="forgotPassword">Forgot password?</a>
+            </div>
+            <div class="password-field">
+              <input id="loginPassword" name="login-password" type="password" placeholder="********" autocomplete="off" required>
+              <button id="togglePassword" class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Sign in →</button>
+          <p id="loginMessage" class="form-message"></p>
+        </form>
+
+        <div class="divider"><span>or</span></div>
+
+        <p class="demo-note">Demo access: <strong>hello@northstar.dev</strong><br>Use any password to preview the dashboard.</p>
+        <p class="auth-switch">New candidate? <a href="pages/register.html">Create an account</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="js/common.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

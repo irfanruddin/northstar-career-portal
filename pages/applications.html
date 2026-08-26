@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Applications — Northstar Careers</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body class="candidate-page">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button
+  class="mobile-menu-btn"
+  id="mobileMenuBtn"
+  aria-label="Open menu"
+>
+  ☰
+</button>
+      <div class="brand">northstar <span>/ careers</span></div>
+      <nav>
+        <a href="dashboard.html">Overview</a>
+        <a href="jobs.html">Find jobs</a>
+        <a class="active" href="applications.html">My applications</a>
+        <a href="profile.html">My profile</a>
+      </nav>
+      <button id="logoutBtn" class="sidebar-logout">Log out</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div><p class="eyebrow">YOUR PROGRESS</p><h1>My applications.</h1></div></header>
+      <section id="applicationsContainer" class="application-list"></section>
+    </main>
+  </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/applications.js"></script>
+
+  <div id="logoutModal" class="logout-modal">
+  <div class="logout-dialog">
+    <div class="logout-icon">↪</div>
+
+    <h2>Log out?</h2>
+
+    <p>
+      Are you sure you want to log out of your account?
+    </p>
+
+    <div class="logout-actions">
+      <button id="cancelLogout" class="logout-cancel">
+        Cancel
+      </button>
+
+      <button id="confirmLogout" class="logout-confirm">
+        Log out
+      </button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

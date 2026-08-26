@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Northstar Careers</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/auth-pages.css">
+</head>
+<body>
+  <main class="simple-auth">
+    <div class="simple-auth-card">
+      <a class="back-link" href="../index.html">← Back to sign in</a>
+      <p class="eyebrow">NEW CANDIDATE</p>
+      <h1>Create your account.</h1>
+      <p class="muted">Set up your candidate profile and start applying.</p>
+
+      <form id="registerForm" class="form-stack">
+        <label>Full name
+          <input id="registerName" type="text" placeholder="Full name" required>
+        </label>
+        <label>Email address
+          <input id="registerEmail" type="email" placeholder="***@gmail.com" required>
+        </label>
+        <label>Phone
+          <input id="registerPhone" type="tel" placeholder="+91 **********" required>
+        </label>
+        <label>Password
+          <input id="registerPassword" type="password" placeholder="Create a password" required minlength="6">
+        </label>
+        <label>Confirm password
+          <input id="registerConfirm" type="password" placeholder="Repeat your password" required>
+        </label>
+        <button class="btn btn-primary" type="submit">Create account →</button>
+        <p id="registerMessage" class="form-message"></p>
+      </form>
+    </div>
+  </main>
+  <script src="../js/common.js"></script>
+  <script src="../js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply — Northstar Careers</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body class="candidate-page">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button
+  class="mobile-menu-btn"
+  id="mobileMenuBtn"
+  aria-label="Open menu"
+>
+  ☰
+</button>
+      <div class="brand">northstar <span>/ careers</span></div>
+      <nav>
+        <a href="dashboard.html">Overview</a>
+        <a class="active" href="jobs.html">Find jobs</a>
+        <a href="applications.html">My applications</a>
+        <a href="profile.html">My profile</a>
+      </nav>
+      <button id="logoutBtn" class="sidebar-logout">Log out</button>
+    </aside>
+
+    <main class="main-content narrow-content">
+      <a class="back-link" href="jobs.html">← Back to jobs</a>
+      <div class="panel application-panel">
+        <p class="eyebrow">APPLICATION</p>
+        <h1 id="applyTitle">Apply for this role</h1>
+        <p id="applyCompany" class="muted"></p>
+
+        <form id="applicationForm" class="form-grid">
+          <label>Full name<input id="appName" placeholder="Full Name" required></label>
+          <label>Email<input id="appEmail" type="email" placeholder="***@gmail.com" required></label>
+          <label>Phone<input id="appPhone" placeholder="+91 **********" required></label>
+          <label>Education<input id="appEducation" placeholder="Degree" required></label>
+          <label class="full">Skills<textarea id="appSkills" rows="4" placeholder="Skills..." required></textarea></label>
+          <label class="full">Resume<input id="appResume" type="file" accept=".pdf,.doc,.docx" required></label>
+          <button class="btn btn-primary" type="submit">Submit application →</button>
+          <p id="applicationMessage" class="form-message full"></p>
+        </form>
+      </div>
+    </main>
+  </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/apply.js"></script>
+
+  <div id="logoutModal" class="logout-modal">
+  <div class="logout-dialog">
+    <div class="logout-icon">↪</div>
+
+    <h2>Log out?</h2>
+
+    <p>
+      Are you sure you want to log out of your account?
+    </p>
+
+    <div class="logout-actions">
+      <button id="cancelLogout" class="logout-cancel">
+        Cancel
+      </button>
+
+      <button id="confirmLogout" class="logout-confirm">
+        Log out
+      </button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
