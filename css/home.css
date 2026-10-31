@@ -1,6 +1,7 @@
 /* Public home page. Loaded after common.css and app.css. */
 
 /* Header sits transparently on top of the hero */
+
 .home-page .public-header {
   position: absolute;
   top: 0;
@@ -303,5 +304,124 @@
   }
   .public-main {
     padding: 24px 16px 16px;
+  }
+}
+
+/* Candidate sidebar layout for the Home page */
+.home-page .app-shell {
+  min-height: 100vh;
+  align-items: start;
+}
+.home-page .home-page-content {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.home-page .public-header {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: none;
+}
+.home-page .public-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.home-page .home-hero-inner {
+  padding-top: 64px;
+}
+.home-page .public-footer {
+  margin-top: 40px;
+}
+@media (max-width: 900px) {
+  .home-page .home-hero-inner {
+    padding-top: 48px;
+  }
+}
+
+/* Home welcome header */
+
+.home-topbar {
+  min-height: 80px;
+  padding: 16px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #e8edf5;
+}
+
+.welcome-heading h2 {
+  margin: 0;
+  color: #111d35;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.welcome-heading p {
+  margin: 5px 0 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.home-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.notification-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #344563;
+  background: #f4f7fc;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.notification-btn:hover {
+  background: #e5edff;
+  color: #2453df;
+}
+
+.home-avatar {
+  width: 43px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2453df;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(36, 83, 223, 0.2);
+}
+
+@media (max-width: 600px) {
+  .home-topbar {
+    padding: 14px 18px;
+  }
+
+  .welcome-heading h2 {
+    font-size: 19px;
+  }
+
+  .welcome-heading p {
+    font-size: 12px;
+    max-width: 230px;
+  }
+
+  .home-topbar-actions {
+    gap: 10px;
   }
 }

@@ -22,7 +22,7 @@ function renderHeroJob() {
     <span class="tag">${esc(latest.type)}</span>
     <h2>${esc(latest.title)}</h2>
     <p>${esc(latest.company)}${latest.location ? " · " + esc(latest.location) : ""}</p>
-    <a href="pages/job-details.html?id=${encodeURIComponent(latest.id)}">View details →</a>`;
+    <a href="job-details.html?id=${encodeURIComponent(latest.id)}">View details →</a>`;
   heroJob.classList.add("show");
 }
 

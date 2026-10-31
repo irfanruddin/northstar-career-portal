@@ -1,4 +1,3 @@
-
 async function getCurrentUser() {
   return await getCurrentUserFromAPI();
 }
@@ -78,7 +77,9 @@ function showAppNotice(text, title = "Notice") {
   return new Promise((resolve) => {
     const close = () => {
       modal.classList.remove("show");
-      modal.querySelector("#appMessageConfirm").removeEventListener("click", close);
+      modal
+        .querySelector("#appMessageConfirm")
+        .removeEventListener("click", close);
       resolve();
     };
     modal.querySelector("#appMessageConfirm").addEventListener("click", close);
@@ -98,12 +99,18 @@ function showAppConfirm(text, title = "Please confirm") {
     const confirm = () => finish(true);
     const finish = (result) => {
       modal.classList.remove("show");
-      modal.querySelector("#appMessageCancel").removeEventListener("click", cancel);
-      modal.querySelector("#appMessageConfirm").removeEventListener("click", confirm);
+      modal
+        .querySelector("#appMessageCancel")
+        .removeEventListener("click", cancel);
+      modal
+        .querySelector("#appMessageConfirm")
+        .removeEventListener("click", confirm);
       resolve(result);
     };
     modal.querySelector("#appMessageCancel").addEventListener("click", cancel);
-    modal.querySelector("#appMessageConfirm").addEventListener("click", confirm);
+    modal
+      .querySelector("#appMessageConfirm")
+      .addEventListener("click", confirm);
   });
 }
 
@@ -111,7 +118,7 @@ function performLogout() {
   localStorage.removeItem("career_token");
   localStorage.removeItem("career_current_user");
 
-  window.location.replace(siteUrl("index.html"));
+  window.location.replace(siteUrl("pages/home.html"));
 }
 
 document
@@ -126,7 +133,10 @@ if (mobileMenuBtn && sidebar) {
     const isOpen = sidebar.classList.toggle("mobile-open");
 
     mobileMenuBtn.textContent = isOpen ? "✕" : "☰";
-    mobileMenuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    mobileMenuBtn.setAttribute(
+      "aria-label",
+      isOpen ? "Close menu" : "Open menu",
+    );
     mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
   });
 
@@ -149,13 +159,18 @@ function showMessage(el, text, type = "error") {
 
   if (form) {
     form.querySelectorAll("button[data-loading]").forEach((button) => {
-      setTimeout(() => setButtonLoading(button, false), type === "success" ? 1200 : 0);
+      setTimeout(
+        () => setButtonLoading(button, false),
+        type === "success" ? 1200 : 0,
+      );
     });
   }
 }
 
 function isValidEmail(email) {
-  return /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/.test(email);
+  return /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/.test(
+    email,
+  );
 }
 
 function isValidPhone(phone) {
@@ -200,7 +215,9 @@ async function getCurrentUserFromAPI() {
     });
 
     if (!response.ok) {
-      window.lastAuthIssue = [401, 403].includes(response.status) ? "expired" : "network";
+      window.lastAuthIssue = [401, 403].includes(response.status)
+        ? "expired"
+        : "network";
       return null;
     }
 
@@ -314,7 +331,9 @@ document.addEventListener(
   "submit",
   (event) => {
     const form = event.target;
-    const button = form.querySelector('button[type="submit"], button:not([type])');
+    const button = form.querySelector(
+      'button[type="submit"], button:not([type])',
+    );
 
     if (!button || form.hasAttribute("data-no-loading")) return;
 
@@ -352,7 +371,10 @@ async function setupPublicNav() {
       const isOpen = nav.classList.toggle("open");
       menuButton.textContent = isOpen ? "✕" : "☰";
       menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Close menu" : "Open menu",
+      );
     });
   }
 
@@ -404,7 +426,9 @@ function fillSelect(select, values) {
   if (!select) return;
 
   const current = select.value;
-  const unique = [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  const unique = [...new Set(values.filter(Boolean))].sort((a, b) =>
+    a.localeCompare(b),
+  );
 
   while (select.options.length > 1) select.remove(1);
 
@@ -412,4 +436,3 @@ function fillSelect(select, values) {
 
   if (unique.includes(current)) select.value = current;
 }
-
