@@ -425,3 +425,57 @@
     gap: 10px;
   }
 }
+
+/* profile avatar */
+.welcome-user {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#homeProfileImage {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5edff;
+  background: #f4f7fc;
+}
+/* Welcome header profile layout */
+.welcome-user {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px;
+  padding: 20px 40px;
+  background: #ffffff;
+}
+
+/* Profile image size */
+.welcome-user #homeProfileImage {
+  width: 55px !important;
+  height: 55px !important;
+  min-width: 55px !important;
+  max-width: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Welcome text */
+.welcome-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-heading h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.welcome-heading p {
+  margin: 5px 0 0;
+}
