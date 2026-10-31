@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"); */
 
 :root {
   /* Colour */
@@ -19,7 +19,8 @@
 
   /* Depth */
   --shadow: 0 18px 45px rgba(11, 31, 77, 0.1);
-  --shadow-soft: 0 1px 2px rgba(11, 31, 77, 0.04), 0 8px 24px rgba(11, 31, 77, 0.05);
+  --shadow-soft:
+    0 1px 2px rgba(11, 31, 77, 0.04), 0 8px 24px rgba(11, 31, 77, 0.05);
   --focus: 0 0 0 3px rgba(29, 78, 216, 0.28);
 
   /* Shape: small controls, cards, dialogs */
@@ -28,8 +29,12 @@
   --radius-lg: 20px;
 
   /* Type */
-  --font-body: "Instrument Sans", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Bricolage Grotesque", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:
+    "Instrument Sans", "DM Sans", system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-display:
+    "Bricolage Grotesque", "Manrope", system-ui, -apple-system, "Segoe UI",
+    sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -48,7 +53,11 @@ body {
   overflow-x: clip;
   color: var(--ink);
   background:
-    radial-gradient(circle at 8% 0%, rgba(29, 78, 216, 0.07), transparent 24rem),
+    radial-gradient(
+      circle at 8% 0%,
+      rgba(29, 78, 216, 0.07),
+      transparent 24rem
+    ),
     var(--soft);
   font-family: var(--font-body);
   line-height: 1.55;
@@ -110,7 +119,16 @@ h3 {
   width: 14px;
   height: 14px;
   background: var(--gold);
-  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  clip-path: polygon(
+    50% 0,
+    62% 38%,
+    100% 50%,
+    62% 62%,
+    50% 100%,
+    38% 62%,
+    0 50%,
+    38% 38%
+  );
 }
 .brand span {
   font-weight: 600;
@@ -143,7 +161,9 @@ textarea {
   outline: none;
   background: var(--white);
   color: var(--ink);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 input::placeholder,
 textarea::placeholder {

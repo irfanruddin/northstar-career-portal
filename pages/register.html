@@ -1,42 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account — Northstar Careers</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/auth-pages.css">
-</head>
-<body>
-  <main class="simple-auth">
-    <div class="simple-auth-card">
-      <a class="back-link" href="login.html">← Back to sign in</a>
-      <p class="eyebrow">New candidate</p>
-      <h1>Create your account.</h1>
-      <p class="muted">Set up your candidate profile and start applying.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account — Northstar Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/auth-pages.css" />
+  </head>
+  <body>
+    <main class="simple-auth">
+      <div class="simple-auth-card">
+        <a class="back-link" href="login.html">← Back to sign in</a>
+        <p class="eyebrow">New candidate</p>
+        <h1>Create your account.</h1>
+        <p class="muted">Set up your candidate profile and start applying.</p>
 
-      <form id="registerForm" class="form-stack">
-        <label>Full name
-          <input id="registerName" autocomplete="name" type="text" placeholder="Full name" required>
-        </label>
-        <label>Email address
-          <input id="registerEmail" autocomplete="email" type="email" placeholder="Email address" required>
-        </label>
-        <label>Phone
-          <input id="registerPhone" autocomplete="tel" type="tel" placeholder="Mobile number" required>
-        </label>
-        <label>Password
-          <input id="registerPassword" autocomplete="new-password" type="password" placeholder="Create a password" required minlength="6">
-        </label>
-        <label>Confirm password
-          <input id="registerConfirm" autocomplete="new-password" type="password" placeholder="Repeat your password" required>
-        </label>
-        <button class="btn btn-primary" type="submit">Create account →</button>
-        <p id="registerMessage" class="form-message"></p>
-      </form>
-    </div>
-  </main>
-  <script src="../js/common.js"></script>
-  <script src="../js/register.js"></script>
-</body>
+        <form id="registerForm" class="form-stack">
+          <label
+            >Full name
+            <input
+              id="registerName"
+              autocomplete="name"
+              type="text"
+              placeholder="Full name"
+              required
+            />
+          </label>
+          <label
+            >Email address
+            <input
+              id="registerEmail"
+              autocomplete="email"
+              type="email"
+              placeholder="Email address"
+              required
+            />
+          </label>
+          <label
+            >Phone
+            <input
+              id="registerPhone"
+              autocomplete="tel"
+              type="tel"
+              placeholder="Mobile number"
+              required
+            />
+          </label>
+          <label
+            >Password
+            <input
+              id="registerPassword"
+              autocomplete="new-password"
+              type="password"
+              placeholder="Create a password"
+              required
+              minlength="6"
+            />
+          </label>
+          <label
+            >Confirm password
+            <input
+              id="registerConfirm"
+              autocomplete="new-password"
+              type="password"
+              placeholder="Repeat your password"
+              required
+            />
+          </label>
+          <button class="btn btn-primary" type="submit">
+            Create account →
+          </button>
+          <p id="registerMessage" class="form-message"></p>
+        </form>
+      </div>
+    </main>
+    <script src="../js/common.js"></script>
+    <script src="../js/register.js"></script>
+  </body>
 </html>

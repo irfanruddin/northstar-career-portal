@@ -1,70 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile — Northstar Careers</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/app.css">
-</head>
-<body class="candidate-page">
-  <div class="app-shell">
-    <aside class="sidebar">
-      <button
-  class="mobile-menu-btn"
-  id="mobileMenuBtn"
-  aria-label="Open menu"
->
-  ☰
-</button>
-      <div class="brand">northstar <span>/ careers</span></div>
-      <nav>
-        <a href="dashboard.html">Overview</a>
-        <a href="jobs.html">Find jobs</a>
-        <a href="applications.html">My applications</a>
-        <a class="active" href="profile.html">My profile</a>
-      </nav>
-      <button id="logoutBtn" class="sidebar-logout">Log out</button>
-    </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile — Northstar Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+  </head>
+  <body class="candidate-page">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+        <div class="brand">northstar <span>/ careers</span></div>
+        <nav>
+          <a href="dashboard.html">Overview</a>
+          <a href="jobs.html">Find jobs</a>
+          <a href="applications.html">My applications</a>
+          <a class="active" href="profile.html">My profile</a>
+        </nav>
+        <button id="logoutBtn" class="sidebar-logout">Log out</button>
+      </aside>
 
-    <main class="main-content narrow-content">
-      <header class="topbar"><div><p class="eyebrow">Candidate profile</p><h1>Your profile.</h1></div></header>
-      <div class="panel">
-        <form id="profileForm" class="form-grid">
-          <label>Full name<input id="profileName" autocomplete="name" placeholder="Full name" required></label>
-          <label>Email<input id="profileEmail" autocomplete="email" type="email" placeholder="Email address" readonly></label>
-          <label>Phone<input id="profilePhone" autocomplete="tel" placeholder="Mobile number" required></label>
-          <label>Education<input id="profileEducation" placeholder="Highest qualification" required></label>
-          <label class="full">Skills<textarea id="profileSkills" rows="5" placeholder="Key skills, separated by commas" required></textarea></label>
-          <button class="btn btn-primary" type="submit">Save profile →</button>
-          <p id="profileMessage" class="form-message full"></p>
-        </form>
-      </div>
-    </main>
-  </div>
-  <script src="../js/common.js"></script>
-  <script src="../js/profile.js"></script>
-
-  <div id="logoutModal" class="logout-modal">
-  <div class="logout-dialog">
-    <div class="logout-icon">↪</div>
-
-    <h2>Log out?</h2>
-
-    <p>
-      Are you sure you want to log out of your account?
-    </p>
-
-    <div class="logout-actions">
-      <button id="cancelLogout" class="logout-cancel" type="button">
-        Cancel
-      </button>
-
-      <button id="confirmLogout" class="logout-confirm" type="button">
-        Log out
-      </button>
+      <main class="main-content narrow-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Candidate profile</p>
+            <h1>Your profile.</h1>
+          </div>
+        </header>
+        <div class="panel">
+          <form id="profileForm" class="form-grid">
+            <label
+              >Full name<input
+                id="profileName"
+                autocomplete="name"
+                placeholder="Full name"
+                required
+            /></label>
+            <label
+              >Email<input
+                id="profileEmail"
+                autocomplete="email"
+                type="email"
+                placeholder="Email address"
+                readonly
+            /></label>
+            <label
+              >Phone<input
+                id="profilePhone"
+                autocomplete="tel"
+                placeholder="Mobile number"
+                required
+            /></label>
+            <label
+              >Education<input
+                id="profileEducation"
+                placeholder="Highest qualification"
+                required
+            /></label>
+            <label class="full"
+              >Skills<textarea
+                id="profileSkills"
+                rows="5"
+                placeholder="Key skills, separated by commas"
+                required
+              ></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">
+              Save profile →
+            </button>
+            <p id="profileMessage" class="form-message full"></p>
+          </form>
+        </div>
+      </main>
     </div>
-  </div>
-</div>
-</body>
+    <script src="../js/common.js"></script>
+    <script src="../js/profile.js"></script>
+
+    <div id="logoutModal" class="logout-modal">
+      <div class="logout-dialog">
+        <div class="logout-icon">↪</div>
+
+        <h2>Log out?</h2>
+
+        <p>Are you sure you want to log out of your account?</p>
+
+        <div class="logout-actions">
+          <button id="cancelLogout" class="logout-cancel" type="button">
+            Cancel
+          </button>
+
+          <button id="confirmLogout" class="logout-confirm" type="button">
+            Log out
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

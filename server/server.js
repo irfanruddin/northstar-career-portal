@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authRoutes");
 const jobsRoutes = require("./routes/jobsRoutes");
 const applicationsRoutes = require("./routes/applicationsRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const compression = require("compression");
 
 const app = express();
 
@@ -15,6 +16,8 @@ const app = express();
 app.set("trust proxy", 1);
 
 const allowedOrigins = new Set([
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
   "http://localhost:5500",
   "http://localhost:5501",
   "http://127.0.0.1:5500",
@@ -26,6 +29,7 @@ const allowedOrigins = new Set([
 ]);
 
 app.use(helmet());
+app.use(compression());
 app.use(
   cors({
     origin: (origin, callback) => {

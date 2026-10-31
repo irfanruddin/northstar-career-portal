@@ -1,53 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign in · Northstar Careers</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/login.css">
-</head>
-<body>
-  <main class="auth-layout">
-    <section class="auth-hero">
-      <a class="brand" href="../index.html">northstar <span>/ careers</span></a>
-      <div class="hero-copy">
-        <p class="eyebrow">Build what matters</p>
-        <h1>Your next<br>chapter starts<br>here.</h1>
-        <p class="hero-description">A considered space for curious developers, thoughtful teams, and work with a lasting impact.</p>
-      </div>
-      <div class="hero-quote">“The right opportunity does not just change your work. It changes what you believe you can make.”</div>
-      <div class="hero-ring ring-one"></div>
-      <div class="hero-ring ring-two"></div>
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in · Northstar Careers</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <main class="auth-layout">
+      <section class="auth-hero">
+        <a class="brand" href="../index.html"
+          >northstar <span>/ careers</span></a
+        >
+        <div class="hero-copy">
+          <p class="eyebrow">Build what matters</p>
+          <h1>Your next<br />chapter starts<br />here.</h1>
+          <p class="hero-description">
+            A considered space for curious developers, thoughtful teams, and
+            work with a lasting impact.
+          </p>
+        </div>
+        <div class="hero-quote">
+          “The right opportunity does not just change your work. It changes what
+          you believe you can make.”
+        </div>
+        <div class="hero-ring ring-one"></div>
+        <div class="hero-ring ring-two"></div>
+      </section>
 
-    <section class="auth-panel">
-      <div class="auth-card">
-        <p class="eyebrow">Member access</p>
-        <h2>Welcome back.</h2>
-        <p class="muted">Sign in to continue your application.</p>
-        <p id="loginNotice" class="login-notice" role="status"></p>
+      <section class="auth-panel">
+        <div class="auth-card">
+          <p class="eyebrow">Member access</p>
+          <h2>Welcome back.</h2>
+          <p class="muted">Sign in to continue your application.</p>
+          <p id="loginNotice" class="login-notice" role="status"></p>
 
-        <form id="loginForm" class="form-stack">
-          <label>Email address
-            <input id="loginEmail" name="email" type="email" placeholder="Email address" autocomplete="username" required>
-          </label>
-          <label for="loginPassword">Password
-            <span class="password-field">
-              <input id="loginPassword" name="password" type="password" placeholder="Password" autocomplete="current-password" required>
-              <button id="togglePassword" class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
-            </span>
-          </label>
-          <button class="btn" type="submit">Sign in →</button>
-          <p id="loginMessage" class="form-message" role="alert"></p>
-        </form>
+          <form id="loginForm" class="form-stack">
+            <label
+              >Email address
+              <input
+                id="loginEmail"
+                name="email"
+                type="email"
+                placeholder="Email address"
+                autocomplete="username"
+                required
+              />
+            </label>
+            <label for="loginPassword"
+              >Password
+              <span class="password-field">
+                <input
+                  id="loginPassword"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  autocomplete="current-password"
+                  required
+                />
+                <button
+                  id="togglePassword"
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  Show
+                </button>
+              </span>
+            </label>
+            <button class="btn" type="submit">Sign in →</button>
+            <p id="loginMessage" class="form-message" role="alert"></p>
+          </form>
 
-        <p class="auth-switch">New candidate? <a id="registerLink" href="register.html">Create an account</a></p>
-        <p class="auth-back"><a href="../index.html">← Browse jobs without signing in</a></p>
-      </div>
-    </section>
-  </main>
-  <script src="../js/common.js"></script>
-  <script src="../js/login.js"></script>
-</body>
+          <p class="auth-switch">
+            New candidate?
+            <a id="registerLink" href="register.html">Create an account</a>
+          </p>
+          <p class="auth-back">
+            <a href="../index.html">← Browse jobs without signing in</a>
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="../js/common.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
 </html>

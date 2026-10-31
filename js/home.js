@@ -14,7 +14,9 @@ let allJobs = [];
 function renderHeroJob() {
   if (!heroJob || !allJobs.length) return;
 
-  const latest = allJobs.reduce((a, b) => (Number(b.id) > Number(a.id) ? b : a));
+  const latest = allJobs.reduce((a, b) =>
+    Number(b.id) > Number(a.id) ? b : a,
+  );
 
   heroJob.innerHTML = `
     <span class="tag">${esc(latest.type)}</span>
@@ -25,6 +27,25 @@ function renderHeroJob() {
 }
 
 async function loadJobs() {
+  const cached = sessionStorage.getItem("career_jobs");
+  if (cached) {
+    try {
+      allJobs = JSON.parse(cached);
+      fillSelect(
+        locationFilter,
+        allJobs.map((job) => job.location),
+      );
+      fillSelect(
+        heroLocation,
+        allJobs.map((job) => job.location),
+      );
+      fillSelect(
+        typeFilter,
+        allJobs.map((job) => job.type),
+      );
+      renderJobs();
+    } catch (error) {}
+  }
   try {
     const response = await fetch(apiUrl("/api/jobs"));
 
@@ -36,9 +57,20 @@ async function loadJobs() {
 
     allJobs = normaliseJobs(data.jobs);
 
-    fillSelect(locationFilter, allJobs.map((job) => job.location));
-    fillSelect(heroLocation, allJobs.map((job) => job.location));
-    fillSelect(typeFilter, allJobs.map((job) => job.type));
+    sessionStorage.setItem("career_jobs", JSON.stringify(allJobs));
+
+    fillSelect(
+      locationFilter,
+      allJobs.map((job) => job.location),
+    );
+    fillSelect(
+      heroLocation,
+      allJobs.map((job) => job.location),
+    );
+    fillSelect(
+      typeFilter,
+      allJobs.map((job) => job.type),
+    );
 
     renderHeroJob();
     renderJobs();
@@ -56,7 +88,8 @@ function renderJobs() {
   const type = typeFilter.value;
 
   const jobs = allJobs.filter((job) => {
-    const haystack = `${job.title} ${job.company} ${job.skills.join(" ")}`.toLowerCase();
+    const haystack =
+      `${job.title} ${job.company} ${job.skills.join(" ")}`.toLowerCase();
 
     return (
       (!q || haystack.includes(q)) &&

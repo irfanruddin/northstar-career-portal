@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "compression": "^1.8.2",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
@@ -24,5 +25,11 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.2.0",
     "mysql2": "^3.24.1"
+  },
+  "overrides": {
+    "minimatch": "11.0.1"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true
   }
 }

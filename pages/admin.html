@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin — Northstar Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    />
     <link rel="stylesheet" href="../css/common.css" />
     <link rel="stylesheet" href="../css/app.css" />
   </head>
@@ -58,8 +64,15 @@
             </div>
           </div>
           <form id="jobForm" class="form-grid">
-            <label>Job title<input id="jobTitle" placeholder="Job title" required /></label>
-            <label>Company<input id="jobCompany" placeholder="Company name" required /></label>
+            <label
+              >Job title<input id="jobTitle" placeholder="Job title" required
+            /></label>
+            <label
+              >Company<input
+                id="jobCompany"
+                placeholder="Company name"
+                required
+            /></label>
             <label
               >Location<input id="jobLocation" required placeholder="Location"
             /></label>
@@ -70,7 +83,10 @@
               </select></label
             >
             <label
-              >Salary<input id="jobSalary" placeholder="Salary or package" required
+              >Salary<input
+                id="jobSalary"
+                placeholder="Salary or package"
+                required
             /></label>
             <label
               >Skills<input
@@ -116,50 +132,80 @@
     <script src="../js/common.js"></script>
     <script src="../js/admin.js"></script>
     <div id="logoutModal" class="logout-modal">
-  <div class="logout-dialog">
-    <div class="logout-icon">↪</div>
+      <div class="logout-dialog">
+        <div class="logout-icon">↪</div>
 
-    <h2>Log out?</h2>
+        <h2>Log out?</h2>
 
-    <p>
-      Are you sure you want to log out of your account?
-    </p>
+        <p>Are you sure you want to log out of your account?</p>
 
-    <div class="logout-actions">
-      <button id="cancelLogout" class="logout-cancel" type="button">
-        Cancel
-      </button>
+        <div class="logout-actions">
+          <button id="cancelLogout" class="logout-cancel" type="button">
+            Cancel
+          </button>
 
-      <button id="confirmLogout" class="logout-confirm" type="button">
-        Log out
-      </button>
-    </div>
-  </div>
-</div>
-<div id="editJobModal" class="logout-modal">
-  <div class="logout-dialog edit-job-dialog">
-    <div class="logout-icon">✎</div>
-    <h2>Edit job</h2>
-    <form id="editJobForm" class="edit-job-form">
-      <label>Job title<input id="editJobTitle" placeholder="Job title" required></label>
-      <label>Company<input id="editJobCompany" placeholder="Company name" required></label>
-      <label>Location<input id="editJobLocation" placeholder="Location" required></label>
-      <label>Job type
-        <select id="editJobType" required>
-          <option>Full time</option>
-          <option>Internship</option>
-        </select>
-      </label>
-      <label>Salary<input id="editJobSalary" placeholder="Salary or package" required></label>
-      <label>Skills<input id="editJobSkills" placeholder="Key skills, separated by commas" required></label>
-      <label>Description<textarea id="editJobDescription" rows="5" placeholder="Job description" required></textarea></label>
-      <p id="editJobMessage" class="form-message"></p>
-      <div class="logout-actions">
-        <button id="cancelEditJob" class="logout-cancel" type="button">Cancel</button>
-        <button class="logout-confirm" type="submit">Save changes</button>
+          <button id="confirmLogout" class="logout-confirm" type="button">
+            Log out
+          </button>
+        </div>
       </div>
-    </form>
-  </div>
-</div>
+    </div>
+    <div id="editJobModal" class="logout-modal">
+      <div class="logout-dialog edit-job-dialog">
+        <div class="logout-icon">✎</div>
+        <h2>Edit job</h2>
+        <form id="editJobForm" class="edit-job-form">
+          <label
+            >Job title<input id="editJobTitle" placeholder="Job title" required
+          /></label>
+          <label
+            >Company<input
+              id="editJobCompany"
+              placeholder="Company name"
+              required
+          /></label>
+          <label
+            >Location<input
+              id="editJobLocation"
+              placeholder="Location"
+              required
+          /></label>
+          <label
+            >Job type
+            <select id="editJobType" required>
+              <option>Full time</option>
+              <option>Internship</option>
+            </select>
+          </label>
+          <label
+            >Salary<input
+              id="editJobSalary"
+              placeholder="Salary or package"
+              required
+          /></label>
+          <label
+            >Skills<input
+              id="editJobSkills"
+              placeholder="Key skills, separated by commas"
+              required
+          /></label>
+          <label
+            >Description<textarea
+              id="editJobDescription"
+              rows="5"
+              placeholder="Job description"
+              required
+            ></textarea>
+          </label>
+          <p id="editJobMessage" class="form-message"></p>
+          <div class="logout-actions">
+            <button id="cancelEditJob" class="logout-cancel" type="button">
+              Cancel
+            </button>
+            <button class="logout-confirm" type="submit">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,80 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Find Jobs — Northstar Careers</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/app.css">
-</head>
-<body class="candidate-page">
-  <div class="app-shell">
-    <aside class="sidebar">
-      <button
-  class="mobile-menu-btn"
-  id="mobileMenuBtn"
-  aria-label="Open menu"
->
-  ☰
-</button>
-      <div class="brand">northstar <span>/ careers</span></div>
-      <nav>
-        <a href="dashboard.html">Overview</a>
-        <a class="active" href="jobs.html">Find jobs</a>
-        <a href="applications.html">My applications</a>
-        <a href="profile.html">My profile</a>
-      </nav>
-      <button id="logoutBtn" class="sidebar-logout">Log out</button>
-    </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Jobs — Northstar Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+  </head>
+  <body class="candidate-page">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+        <div class="brand">northstar <span>/ careers</span></div>
+        <nav>
+          <a href="dashboard.html">Overview</a>
+          <a class="active" href="jobs.html">Find jobs</a>
+          <a href="applications.html">My applications</a>
+          <a href="profile.html">My profile</a>
+        </nav>
+        <button id="logoutBtn" class="sidebar-logout">Log out</button>
+      </aside>
 
-    <main class="main-content">
-      <header class="topbar">
-        <div><p class="eyebrow">Opportunities</p><h1>Find your next role.</h1></div>
-      </header>
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Opportunities</p>
+            <h1>Find your next role.</h1>
+          </div>
+        </header>
 
-      <section class="search-panel">
-        <input id="jobSearch" type="search" placeholder="Search by role, skill or company...">
-        <select id="locationFilter">
-          <option value="">All locations</option>
-          <option>Bengaluru</option>
-          <option>Mumbai</option>
-          <option>Hyderabad</option>
-          <option>Remote</option>
-        </select>
-        <select id="typeFilter">
-          <option value="">All types</option>
-          <option>Full time</option>
-          <option>Internship</option>
-        </select>
-      </section>
+        <section class="search-panel">
+          <input
+            id="jobSearch"
+            type="search"
+            placeholder="Search by role, skill or company..."
+          />
+          <select id="locationFilter">
+            <option value="">All locations</option>
+            <option>Bengaluru</option>
+            <option>Mumbai</option>
+            <option>Hyderabad</option>
+            <option>Remote</option>
+          </select>
+          <select id="typeFilter">
+            <option value="">All types</option>
+            <option>Full time</option>
+            <option>Internship</option>
+          </select>
+        </section>
 
-      <div id="jobCount" class="results-count"></div>
-      <section id="jobsContainer" class="jobs-grid"></section>
-    </main>
-  </div>
-  <script src="../js/common.js"></script>
-  <script src="../js/jobs.js"></script>
-
-  <div id="logoutModal" class="logout-modal">
-  <div class="logout-dialog">
-    <div class="logout-icon">↪</div>
-
-    <h2>Log out?</h2>
-
-    <p>
-      Are you sure you want to log out of your account?
-    </p>
-
-    <div class="logout-actions">
-      <button id="cancelLogout" class="logout-cancel" type="button">
-        Cancel
-      </button>
-
-      <button id="confirmLogout" class="logout-confirm" type="button">
-        Log out
-      </button>
+        <div id="jobCount" class="results-count"></div>
+        <section id="jobsContainer" class="jobs-grid"></section>
+      </main>
     </div>
-  </div>
-</div>
-</body>
+    <script src="../js/common.js"></script>
+    <script src="../js/jobs.js"></script>
+
+    <div id="logoutModal" class="logout-modal">
+      <div class="logout-dialog">
+        <div class="logout-icon">↪</div>
+
+        <h2>Log out?</h2>
+
+        <p>Are you sure you want to log out of your account?</p>
+
+        <div class="logout-actions">
+          <button id="cancelLogout" class="logout-cancel" type="button">
+            Cancel
+          </button>
+
+          <button id="confirmLogout" class="logout-confirm" type="button">
+            Log out
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

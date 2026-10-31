@@ -1,35 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job details · Northstar Careers</title>
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="../css/app.css">
-  <link rel="stylesheet" href="../css/home.css">
-</head>
-<body>
-  <header class="public-header">
-    <div class="public-header-inner">
-      <a class="brand" href="../index.html">northstar <span>/ careers</span></a>
-      <button id="publicMenuBtn" class="public-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="publicNav">☰</button>
-      <nav id="publicNav" class="public-nav" aria-label="Main">
-        <a href="../index.html#jobs">Jobs</a>
-        <div id="siteNavActions" class="nav-actions">
-          <a class="btn btn-outline" href="login.html">Sign in</a>
-          <a class="btn" href="register.html">Create account</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job details · Northstar Careers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+  <body>
+    <header class="public-header">
+      <div class="public-header-inner">
+        <a class="brand" href="../index.html"
+          >northstar <span>/ careers</span></a
+        >
+        <button
+          id="publicMenuBtn"
+          class="public-menu-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="publicNav"
+        >
+          ☰
+        </button>
+        <nav id="publicNav" class="public-nav" aria-label="Main">
+          <a href="../index.html#jobs">Jobs</a>
+          <div id="siteNavActions" class="nav-actions">
+            <a class="btn btn-outline" href="login.html">Sign in</a>
+            <a class="btn" href="register.html">Create account</a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-  <main class="public-main">
-    <a class="back-link" href="../index.html#jobs">← Back to all jobs</a>
-    <div id="jobDetails" class="detail-layout"><div class="empty-state">Loading job…</div></div>
-  </main>
+    <main class="public-main">
+      <a class="back-link" href="../index.html#jobs">← Back to all jobs</a>
+      <div id="jobDetails" class="detail-layout">
+        <div class="empty-state">Loading job…</div>
+      </div>
+    </main>
 
-  <footer class="public-footer">© Northstar Careers</footer>
-  <script src="../js/common.js"></script>
-  <script src="../js/job-details.js"></script>
-</body>
+    <footer class="public-footer">© Northstar Careers</footer>
+    <script src="../js/common.js"></script>
+    <script src="../js/job-details.js"></script>
+  </body>
 </html>

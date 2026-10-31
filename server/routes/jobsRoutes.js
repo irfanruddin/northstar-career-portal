@@ -65,6 +65,8 @@ router.get("/:id", async (req, res) => {
 
     const job = jobs[0];
 
+    res.set("Cache-Control", "public, max-age=30");
+
     res.json({
       job: {
         ...job,
