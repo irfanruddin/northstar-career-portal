@@ -3,58 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Details — Northstar Careers</title>
+  <title>Job details · Northstar Careers</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/app.css">
+  <link rel="stylesheet" href="../css/home.css">
 </head>
-<body class="candidate-page">
-  <div class="app-shell">
-    <aside class="sidebar">
-      <button
-  class="mobile-menu-btn"
-  id="mobileMenuBtn"
-  aria-label="Open menu"
->
-  ☰
-</button>
-      <div class="brand">northstar <span>/ careers</span></div>
-      <nav>
-        <a href="dashboard.html">Overview</a>
-        <a class="active" href="jobs.html">Find jobs</a>
-        <a href="applications.html">My applications</a>
-        <a href="profile.html">My profile</a>
+<body>
+  <header class="public-header">
+    <div class="public-header-inner">
+      <a class="brand" href="../index.html">northstar <span>/ careers</span></a>
+      <button id="publicMenuBtn" class="public-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="publicNav">☰</button>
+      <nav id="publicNav" class="public-nav" aria-label="Main">
+        <a href="../index.html#jobs">Jobs</a>
+        <div id="siteNavActions" class="nav-actions">
+          <a class="btn btn-outline" href="login.html">Sign in</a>
+          <a class="btn" href="register.html">Create account</a>
+        </div>
       </nav>
-      <button id="logoutBtn" class="sidebar-logout">Log out</button>
-    </aside>
+    </div>
+  </header>
 
-    <main class="main-content">
-      <a class="back-link" href="jobs.html">← Back to jobs</a>
-      <div id="jobDetails" class="detail-layout"></div>
-    </main>
-  </div>
+  <main class="public-main">
+    <a class="back-link" href="../index.html#jobs">← Back to all jobs</a>
+    <div id="jobDetails" class="detail-layout"><div class="empty-state">Loading job…</div></div>
+  </main>
+
+  <footer class="public-footer">© Northstar Careers</footer>
   <script src="../js/common.js"></script>
   <script src="../js/job-details.js"></script>
-
-  <div id="logoutModal" class="logout-modal">
-  <div class="logout-dialog">
-    <div class="logout-icon">↪</div>
-
-    <h2>Log out?</h2>
-
-    <p>
-      Are you sure you want to log out of your account?
-    </p>
-
-    <div class="logout-actions">
-      <button id="cancelLogout" class="logout-cancel">
-        Cancel
-      </button>
-
-      <button id="confirmLogout" class="logout-confirm">
-        Log out
-      </button>
-    </div>
-  </div>
-</div>
 </body>
 </html>

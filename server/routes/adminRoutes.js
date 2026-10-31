@@ -96,7 +96,7 @@ router.get(
   async (req, res) => {
     try {
       const [applications] = await db.execute(
-    `SELECT
+        `SELECT
         a.id,
         a.user_id,
         a.job_id,
@@ -112,8 +112,8 @@ router.get(
         a.resume_name,
         a.resume_path
      FROM applications a
-     ORDER BY a.applied_at DESC`
-);
+     ORDER BY a.applied_at DESC`,
+      );
 
       res.json({
         applications,
@@ -303,7 +303,7 @@ router.get(
         `SELECT resume_path, resume_name
          FROM applications
          WHERE id = ?`,
-        [applicationId]
+        [applicationId],
       );
 
       if (applications.length === 0) {
@@ -337,13 +337,14 @@ router.get(
       const contentTypes = {
         ".pdf": "application/pdf",
         ".doc": "application/msword",
-        ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ".docx":
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
       };
 
       res.sendFile(availableFilePath, {
         headers: {
           "Content-Type": contentTypes[extension] || "application/octet-stream",
-          "Content-Disposition": `inline; filename="${path.basename(application.resume_name || application.resume_path)}"`,
+          "Content-Disposition": `inline; filename="${path.basename(application.resume_name || application.resume_path).replace(/[^A-Za-z0-9._ -]/g, "_")}"`,
         },
       });
     } catch (error) {
@@ -353,7 +354,7 @@ router.get(
         message: "Server error while downloading resume.",
       });
     }
-  }
+  },
 );
 
 module.exports = router;

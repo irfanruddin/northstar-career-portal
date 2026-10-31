@@ -1,6 +1,7 @@
 
 const form = document.getElementById("registerForm");
 const message = document.getElementById("registerMessage");
+const nextTarget = safeNextTarget(new URLSearchParams(window.location.search).get("next"));
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -62,14 +63,14 @@ form.addEventListener("submit", async (e) => {
         form.reset();
 
         setTimeout(() => {
-            window.location.href = "../index.html";
+            window.location.href = "login.html" + (nextTarget ? "?next=" + encodeURIComponent(nextTarget) : "");
         }, 1000);
 
     } catch (error) {
         console.error(error);
         showMessage(
             message,
-            "Unable to connect to the server. Make sure the backend is running."
+            "Unable to connect to the server. Please check your connection and try again."
         );
     }
 });

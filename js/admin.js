@@ -4,7 +4,7 @@ async function initAdmin() {
   currentUser = await requireLogin();
 
   if (!currentUser || currentUser.role !== "admin") {
-    window.location.replace("../index.html");
+    window.location.replace("dashboard.html");
     return;
   }
 
@@ -130,7 +130,7 @@ function renderJobs(jobs) {
               </button>
 
               <button
-                class="btn"
+                class="btn btn-danger"
                 data-delete-job="${job.id}"
               >
                 Delete
@@ -437,7 +437,7 @@ function renderApplications(apps) {
         }
 
         const blob = await response.blob();
-        showResumeViewer(blob, "resume");
+        showResumeViewer(blob, "resume" + resumeExtension(blob.type));
       } catch (error) {
         console.error("Resume error:", error);
         await showAppNotice(

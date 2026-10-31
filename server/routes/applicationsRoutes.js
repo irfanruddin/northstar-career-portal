@@ -73,6 +73,13 @@ router.post(
     });
   },
   async (req, res) => {
+    // Delete the uploaded resume unless the application is saved.
+    let applicationSaved = false;
+    res.on("finish", () => {
+      if (!applicationSaved && req.file) {
+        fs.unlink(path.join(uploadDir, req.file.filename), () => {});
+      }
+    });
 
     try {
       const userId = req.user.id;
@@ -176,6 +183,8 @@ router.post(
           resumePath,
         ],
       );
+
+      applicationSaved = true;
 
       res.status(201).json({
         message: "Application submitted successfully.",

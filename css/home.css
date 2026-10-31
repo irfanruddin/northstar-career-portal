@@ -1,0 +1,307 @@
+/* Public home page. Loaded after common.css and app.css. */
+
+/* Header sits transparently on top of the hero */
+.home-page .public-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border-bottom: 0;
+  backdrop-filter: none;
+}
+.btn-outline {
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--teal-dark);
+  border: 1px solid var(--field);
+  box-shadow: none;
+}
+.btn-outline:hover {
+  background: var(--white);
+  box-shadow: none;
+}
+
+/* Hero */
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(120deg, #e0e6ff 0%, #d0daff 45%, #bfcbfb 100%);
+}
+.home-hero::before {
+  content: "";
+  position: absolute;
+  left: -240px;
+  top: -140px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+.home-hero::after {
+  content: "";
+  position: absolute;
+  right: -260px;
+  bottom: -320px;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background: rgba(140, 158, 255, 0.22);
+}
+.home-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 24px 104px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.home-hero-copy {
+  flex: 1;
+  min-width: 0;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--teal-dark);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.home-hero h1 {
+  font-size: clamp(2.6rem, 5.2vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.home-hero h1 .accent {
+  color: var(--teal);
+}
+.home-lead {
+  margin: 20px 0 28px;
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* Search bar: text, location, button */
+.hero-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  width: min(700px, calc(100% + 90px));
+  padding: 8px;
+  background: var(--white);
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(11, 31, 77, 0.14);
+}
+.hero-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 0 14px;
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--muted);
+}
+.hero-field svg {
+  flex: none;
+}
+.hero-field-search {
+  flex: 1;
+}
+.hero-field-location {
+  flex: 0 0 200px;
+  border-left: 1px solid var(--line);
+}
+.hero-field input,
+.hero-field select {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  box-shadow: none;
+  background-color: transparent;
+  padding-left: 0;
+}
+.hero-field input:focus,
+.hero-field select:focus {
+  box-shadow: none;
+}
+.hero-field select {
+  color: var(--ink);
+  background-position: right 2px center;
+  padding-right: 28px;
+}
+.hero-search .btn {
+  flex: none;
+  white-space: nowrap;
+}
+
+/* Right side: hero image, edges faded into the background */
+.hero-visual {
+  flex: none;
+  width: min(520px, 46%);
+  margin-right: -60px;
+}
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* soft edges so the picture melts into the background */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 5%, #000 84%, transparent),
+    linear-gradient(to bottom, transparent, #000 5%, #000 86%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 5%, #000 84%, transparent),
+    linear-gradient(to bottom, transparent, #000 5%, #000 86%, transparent);
+  mask-composite: intersect;
+}
+
+/* Jobs: a white panel that overlaps the bottom of the hero */
+.home-jobs {
+  position: relative;
+  z-index: 2;
+  width: calc(100% - 48px);
+  max-width: 1152px;
+  margin: -56px auto 0;
+  padding: 36px 40px 40px;
+  background: var(--white);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  scroll-margin-top: 16px;
+}
+.home-jobs-head {
+  margin-bottom: 24px;
+}
+.home-jobs-head h2 {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+}
+.home-jobs-head p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+.home-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.home-jobs .jobs-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.empty-state {
+  grid-column: 1 / -1;
+}
+
+/* Call to action */
+.home-cta {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+.home-cta-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 44px 48px;
+  background: var(--night);
+  border-radius: 24px;
+}
+.home-cta-box h2 {
+  color: #fff;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  margin-bottom: 8px;
+}
+.home-cta-box p {
+  margin: 0;
+  color: #c7d4ee;
+  max-width: 520px;
+}
+.home-cta-box .btn {
+  flex: none;
+  background: #c3d5ff;
+  color: var(--night);
+  box-shadow: none;
+}
+.home-cta-box .btn:hover {
+  background: #fff;
+}
+
+/* Public job details */
+.public-main {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 40px 24px 24px;
+}
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+@media (max-width: 1000px) {
+  .home-jobs .jobs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .home-hero-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 96px 20px 80px;
+  }
+  .hero-visual {
+    width: min(420px, 100%);
+    margin: 0 auto;
+  }
+  .home-cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
+  }
+}
+@media (max-width: 650px) {
+  .hero-search {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .hero-field {
+    padding: 0 10px;
+  }
+  .hero-field-location {
+    flex: none;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .home-jobs {
+    width: calc(100% - 24px);
+    padding: 28px 18px 28px;
+    border-radius: 22px;
+  }
+  .home-jobs .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-filters {
+    grid-template-columns: 1fr;
+  }
+  .home-cta {
+    padding: 0 16px;
+  }
+  .public-main {
+    padding: 24px 16px 16px;
+  }
+}

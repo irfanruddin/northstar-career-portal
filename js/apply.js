@@ -11,10 +11,9 @@ let job = null;
 async function loadApplicationPage() {
   try {
     // Get logged-in user from the backend
-    user = await getCurrentUserFromAPI();
+    user = await requireLogin();
 
     if (!user) {
-      window.location.href = "../index.html";
       return;
     }
 
@@ -163,7 +162,7 @@ const response = await fetch(
 
       setTimeout(() => {
         location.href = "applications.html";
-      }, 10000);
+      }, 1000);
     } catch (error) {
       console.error("Application error:", error);
 

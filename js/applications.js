@@ -34,7 +34,7 @@ async function loadApplications() {
               </p>
             </div>
 
-            <span class="status">
+            <span class="status ${statusClass(a.status)}">
               ${esc(a.status)}
             </span>
           </article>

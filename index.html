@@ -1,59 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Northstar Careers — Sign In</title>
-  <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-  <main class="auth-layout">
-    <section class="auth-hero">
-      <div class="brand">northstar <span>/ careers</span></div>
-      <div class="hero-copy">
-        <p class="eyebrow">BUILD WHAT MATTERS</p>
-        <h1>Your next<br>chapter starts<br>here.</h1>
-        <p class="hero-description">A considered space for curious developers, thoughtful teams, and work with a lasting impact.</p>
-      </div>
-      <div class="hero-quote">“The right opportunity does not just change your work. It changes what you believe you can make.”</div>
-      <div class="hero-ring ring-one"></div>
-      <div class="hero-ring ring-two"></div>
-    </section>
-
-    <section class="auth-panel">
-      <div class="auth-card">
-        <p class="eyebrow">MEMBER ACCESS</p>
-        <h2>Welcome back.</h2>
-        <p class="muted">Sign in to continue your application.</p>
-
-        <form id="loginForm" class="form-stack" autocomplete="off">
-          <label>Email address
-            <input id="loginEmail" name="login-email" type="email" placeholder="e.g. ***@gmail.com" autocomplete="off" list="loginEmailSuggestions" required>
-          </label>
-          <datalist id="loginEmailSuggestions"></datalist>
-          <div>
-            <div class="label-row">
-              <label for="loginPassword">Password</label>
-              <a href="#" id="forgotPassword">Forgot password?</a>
-            </div>
-            <div class="password-field">
-              <input id="loginPassword" name="login-password" type="password" placeholder="********" autocomplete="off" required>
-              <button id="togglePassword" class="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northstar Careers · Find your next developer role</title>
+    <meta
+      name="description"
+      content="Browse open developer jobs, read every detail, and apply when you are ready."
+    />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body class="home-page">
+    <header class="public-header">
+      <div class="public-header-inner">
+        <a class="brand" href="index.html">northstar <span>/ careers</span></a>
+        <button
+          id="publicMenuBtn"
+          class="public-menu-btn"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="publicNav"
+        >
+          ☰
+        </button>
+        <nav id="publicNav" class="public-nav" aria-label="Main">
+          <a href="#jobs">Jobs</a>
+          <div id="siteNavActions" class="nav-actions">
+            <a class="btn btn-outline" href="pages/login.html">Sign in</a>
+            <a class="btn" href="pages/register.html">Create account</a>
           </div>
-          <button class="btn btn-primary" type="submit">Sign in →</button>
-          <p id="loginMessage" class="form-message"></p>
-        </form>
-
-        <div class="divider"><span>or</span></div>
-
-        <p class="demo-note">Demo access: <strong>hello@northstar.dev</strong><br>Use any password to preview the dashboard.</p>
-        <p class="auth-switch">New candidate? <a href="pages/register.html">Create an account</a></p>
+        </nav>
       </div>
-    </section>
-  </main>
-  <script src="js/common.js"></script>
-  <script src="js/login.js"></script>
-</body>
+    </header>
+
+    <main>
+      <section class="home-hero">
+        <div class="home-hero-inner">
+          <div class="home-hero-copy">
+            <p class="hero-badge">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8" />
+              </svg>
+              Open to everyone
+            </p>
+            <h1>
+              Find the job that points you <span class="accent">forward.</span>
+            </h1>
+            <p class="home-lead">
+              Browse open developer roles and read every detail first. Sign in
+              only when you are ready to apply.
+            </p>
+            <form
+              id="homeSearchForm"
+              class="hero-search"
+              role="search"
+              data-no-loading
+            >
+              <label class="hero-field hero-field-search">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M21 21l-4.3-4.3" />
+                </svg>
+                <input
+                  id="jobSearch"
+                  type="search"
+                  placeholder="Job title, skill or company"
+                  aria-label="Search jobs"
+                />
+              </label>
+              <label class="hero-field hero-field-location">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" />
+                  <circle cx="12" cy="10" r="2.5" />
+                </svg>
+                <select id="heroLocation" aria-label="Location">
+                  <option value="">All locations</option>
+                </select>
+              </label>
+              <button class="btn" type="submit">
+                Search jobs
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </button>
+            </form>
+          </div>
+          <div class="hero-visual">
+            <img
+              class="hero-image"
+              src="hero.jpg"
+              alt="A team of people planning and discussing work around desks and a screen"
+              width="720"
+              height="563"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="jobs" class="home-jobs">
+        <div class="home-jobs-head">
+          <h2>Open jobs</h2>
+          <p>Open to everyone. Sign in when you are ready to apply.</p>
+        </div>
+        <div class="home-filters">
+          <select id="locationFilter" aria-label="Filter by location">
+            <option value="">All locations</option>
+          </select>
+          <select id="typeFilter" aria-label="Filter by job type">
+            <option value="">All job types</option>
+          </select>
+          <button id="clearFilters" class="btn btn-secondary" type="button">
+            Clear filters
+          </button>
+        </div>
+        <p id="jobCount" class="results-count" aria-live="polite"></p>
+        <div id="jobsContainer" class="jobs-grid">
+          <div class="empty-state">Loading jobs…</div>
+        </div>
+      </section>
+
+      <section id="homeCta" class="home-cta">
+        <div class="home-cta-box">
+          <div>
+            <h2>Ready to apply?</h2>
+            <p>
+              Create a free account to apply, upload your resume and track every
+              application.
+            </p>
+          </div>
+          <a class="btn" href="pages/register.html">Create account</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="public-footer">© Northstar Careers</footer>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+  </body>
 </html>

@@ -30,7 +30,7 @@
       <main class="main-content">
         <header class="topbar">
           <div>
-            <p class="eyebrow">ADMIN CONSOLE</p>
+            <p class="eyebrow">Admin console</p>
             <h1>Manage the career portal.</h1>
           </div>
         </header>
@@ -53,7 +53,7 @@
         <section id="manageJobs" class="panel">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">JOB MANAGEMENT</p>
+              <p class="eyebrow">Job management</p>
               <h2>Add a job</h2>
             </div>
           </div>
@@ -70,19 +70,19 @@
               </select></label
             >
             <label
-              >Salary<input id="jobSalary" placeholder="₹5 LPA" required
+              >Salary<input id="jobSalary" placeholder="Salary or package" required
             /></label>
             <label
               >Skills<input
                 id="jobSkills"
-                placeholder="Skills..."
+                placeholder="Key skills, separated by commas"
                 required
             /></label>
             <label class="full"
               >Description<textarea
                 id="jobDescription"
                 rows="5"
-                placeholder="Job Description"
+                placeholder="Job description"
                 required
               ></textarea>
             </label>
@@ -94,7 +94,7 @@
         <section id="jobManagement" class="panel">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">CURRENT JOBS</p>
+              <p class="eyebrow">Current jobs</p>
               <h2>Manage jobs</h2>
             </div>
           </div>
@@ -105,7 +105,7 @@
         <section id="manageApplications" class="panel">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">APPLICATION MANAGEMENT</p>
+              <p class="eyebrow">Application management</p>
               <h2>Candidate applications</h2>
             </div>
           </div>
@@ -126,11 +126,11 @@
     </p>
 
     <div class="logout-actions">
-      <button id="cancelLogout" class="logout-cancel">
+      <button id="cancelLogout" class="logout-cancel" type="button">
         Cancel
       </button>
 
-      <button id="confirmLogout" class="logout-confirm">
+      <button id="confirmLogout" class="logout-confirm" type="button">
         Log out
       </button>
     </div>
@@ -141,16 +141,18 @@
     <div class="logout-icon">✎</div>
     <h2>Edit job</h2>
     <form id="editJobForm" class="edit-job-form">
-      <input id="editJobTitle" placeholder="Job title" required>
-      <input id="editJobCompany" placeholder="Company name" required>
-      <input id="editJobLocation" placeholder="Location" required>
-      <select id="editJobType" required>
-        <option>Full time</option>
-        <option>Internship</option>
-      </select>
-      <input id="editJobSalary" placeholder="Salary" required>
-      <input id="editJobSkills" placeholder="Skills, comma separated" required>
-      <textarea id="editJobDescription" rows="5" placeholder="Job description" required></textarea>
+      <label>Job title<input id="editJobTitle" placeholder="Job title" required></label>
+      <label>Company<input id="editJobCompany" placeholder="Company name" required></label>
+      <label>Location<input id="editJobLocation" placeholder="Location" required></label>
+      <label>Job type
+        <select id="editJobType" required>
+          <option>Full time</option>
+          <option>Internship</option>
+        </select>
+      </label>
+      <label>Salary<input id="editJobSalary" placeholder="Salary or package" required></label>
+      <label>Skills<input id="editJobSkills" placeholder="Key skills, separated by commas" required></label>
+      <label>Description<textarea id="editJobDescription" rows="5" placeholder="Job description" required></textarea></label>
       <p id="editJobMessage" class="form-message"></p>
       <div class="logout-actions">
         <button id="cancelEditJob" class="logout-cancel" type="button">Cancel</button>

@@ -1,10 +1,7 @@
 (async function () {
-  const user = await getCurrentUserFromAPI();
+  const user = await requireLogin();
 
-  if (!user) {
-    window.location.href = "../index.html";
-    return;
-  }
+  if (!user) return;
 
   const token = localStorage.getItem("career_token");
 

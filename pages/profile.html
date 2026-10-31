@@ -28,14 +28,14 @@
     </aside>
 
     <main class="main-content narrow-content">
-      <header class="topbar"><div><p class="eyebrow">CANDIDATE PROFILE</p><h1>Your profile.</h1></div></header>
+      <header class="topbar"><div><p class="eyebrow">Candidate profile</p><h1>Your profile.</h1></div></header>
       <div class="panel">
         <form id="profileForm" class="form-grid">
-          <label>Full name<input id="profileName" placeholder="Full name" required></label>
-          <label>Email<input id="profileEmail" type="email" placeholder="***@gmail.com" readonly></label>
-          <label>Phone<input id="profilePhone" placeholder="+91 **********" required></label>
-          <label>Education<input id="profileEducation" placeholder="Degree" required></label>
-          <label class="full">Skills<textarea id="profileSkills" rows="5" placeholder="Skills..." required></textarea></label>
+          <label>Full name<input id="profileName" autocomplete="name" placeholder="Full name" required></label>
+          <label>Email<input id="profileEmail" autocomplete="email" type="email" placeholder="Email address" readonly></label>
+          <label>Phone<input id="profilePhone" autocomplete="tel" placeholder="Mobile number" required></label>
+          <label>Education<input id="profileEducation" placeholder="Highest qualification" required></label>
+          <label class="full">Skills<textarea id="profileSkills" rows="5" placeholder="Key skills, separated by commas" required></textarea></label>
           <button class="btn btn-primary" type="submit">Save profile →</button>
           <p id="profileMessage" class="form-message full"></p>
         </form>
@@ -56,11 +56,11 @@
     </p>
 
     <div class="logout-actions">
-      <button id="cancelLogout" class="logout-cancel">
+      <button id="cancelLogout" class="logout-cancel" type="button">
         Cancel
       </button>
 
-      <button id="confirmLogout" class="logout-confirm">
+      <button id="confirmLogout" class="logout-confirm" type="button">
         Log out
       </button>
     </div>

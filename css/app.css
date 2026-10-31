@@ -1,56 +1,72 @@
 body {
-  background: transparent;
+  background: var(--soft);
 }
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 245px 1fr;
+  grid-template-columns: 256px minmax(0, 1fr);
 }
+
+/* Sidebar */
 .sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: 32px 22px;
-  background: rgba(255, 255, 255, 0.88);
+  height: 100dvh;
+  padding: 28px 18px;
+  background: var(--white);
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  box-shadow: 8px 0 28px rgba(18, 37, 45, 0.04);
-  backdrop-filter: blur(12px);
+}
+.sidebar .brand {
+  padding: 0 10px;
+  font-size: 1.2rem;
 }
 .sidebar nav {
   display: grid;
-  gap: 5px;
-  margin-top: 62px;
+  gap: 4px;
+  margin-top: 44px;
 }
 .sidebar nav a {
-  padding: 12px 14px;
-  border-radius: 8px;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
   color: var(--muted);
-  font-weight: 700;
-  transition: color 0.2s ease, background 0.2s ease, transform 0.2s var(--ease);
+  font-weight: 600;
+  transition: color 0.2s ease, background 0.2s ease;
 }
-.sidebar nav a:hover,
+.sidebar nav a:hover {
+  color: var(--ink);
+  background: var(--soft);
+}
 .sidebar nav a.active {
-  color: var(--teal);
+  color: var(--teal-dark);
   background: var(--mint);
-  transform: translateX(3px);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--teal);
 }
 .sidebar-logout {
   margin-top: auto;
   border: 0;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--muted);
   text-align: left;
-  padding: 12px 14px;
-  font-weight: 700;
+  padding: 11px 14px;
+  font-weight: 600;
+  transition: color 0.2s ease, background 0.2s ease;
 }
+.sidebar-logout:hover {
+  color: var(--danger);
+  background: #fbeeee;
+}
+
+/* Page frame */
 .main-content {
   width: min(1200px, 100%);
   min-width: 0;
-  padding: 55px clamp(25px, 5vw, 75px);
+  padding: 48px clamp(24px, 5vw, 72px);
   margin: 0 auto;
-  animation: pageIn 0.5s var(--ease) both;
 }
 .narrow-content {
   max-width: 1050px;
@@ -59,27 +75,29 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 44px;
+  gap: 16px;
+  margin-bottom: 36px;
 }
 .topbar h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
 }
 .avatar-link {
   width: 44px;
   height: 44px;
+  flex: none;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--ink);
+  background: var(--night);
   color: #fff;
   font-weight: 800;
-  box-shadow: 0 8px 18px rgba(18, 37, 45, 0.16);
-  transition: transform 0.2s var(--ease), background 0.2s ease;
+  transition: background 0.2s ease;
 }
 .avatar-link:hover {
   background: var(--teal);
-  transform: translateY(-2px);
 }
+
+/* Dashboard */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -87,26 +105,29 @@ body {
   margin-bottom: 28px;
 }
 .stat-card {
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
-}
-.stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
 }
 .stat-card span,
 .stat-card small {
   display: block;
   color: var(--muted);
 }
+.stat-card span {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
 .stat-card strong {
   display: block;
-  font: 800 2.4rem "Manrope";
-  margin: 10px 0 5px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  margin: 12px 0 8px;
 }
 .content-grid {
   display: grid;
@@ -115,9 +136,9 @@ body {
 }
 .panel {
   min-width: 0;
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 28px;
   margin-bottom: 24px;
   box-shadow: var(--shadow-soft);
@@ -127,14 +148,18 @@ body {
   justify-content: space-between;
   gap: 20px;
   align-items: flex-end;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 .panel-heading h2 {
   font-size: 1.5rem;
 }
 .panel-heading > a {
-  color: var(--teal);
+  color: var(--teal-dark);
   font-weight: 700;
+}
+.panel-heading > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .job-list {
   display: grid;
@@ -146,19 +171,18 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  padding: 18px;
+  padding: 16px 18px;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  transition: border-color 0.2s ease, transform 0.2s var(--ease), box-shadow 0.2s ease;
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 .job-mini:hover {
-  border-color: rgba(8, 127, 126, 0.4);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
+  border-color: rgba(29, 78, 216, 0.45);
+  background: #f8faff;
 }
 .job-mini h3 {
   font-size: 1.05rem;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .job-mini p {
   margin: 0;
@@ -166,12 +190,12 @@ body {
   font-size: 0.9rem;
 }
 .job-mini .btn {
-  padding: 10px 14px;
+  padding: 10px 16px;
   white-space: nowrap;
 }
 .activity-list {
   display: grid;
-  gap: 12px;
+  gap: 14px;
 }
 .activity {
   border-bottom: 1px solid var(--line);
@@ -179,6 +203,7 @@ body {
 }
 .activity:last-child {
   border-bottom: 0;
+  padding-bottom: 0;
 }
 .activity strong {
   display: block;
@@ -187,6 +212,8 @@ body {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* Job search and cards */
 .search-panel {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -195,6 +222,7 @@ body {
 }
 .results-count {
   color: var(--muted);
+  font-weight: 500;
   margin-bottom: 16px;
 }
 .jobs-grid {
@@ -203,46 +231,50 @@ body {
   gap: 18px;
 }
 .job-card {
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 26px;
   display: flex;
   flex-direction: column;
   min-height: 280px;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .job-card:hover {
-  border-color: rgba(8, 127, 126, 0.35);
-  transform: translateY(-5px);
+  border-color: rgba(29, 78, 216, 0.45);
   box-shadow: var(--shadow);
 }
-.job-card .tag {
+.job-card .tag,
+.detail-layout .tag {
   display: inline-block;
-  color: var(--teal);
+  width: fit-content;
+  color: var(--teal-dark);
   background: var(--mint);
-  padding: 6px 9px;
+  padding: 6px 10px;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  margin-bottom: 20px;
+}
+.job-card .tag {
+  margin-bottom: 18px;
 }
 .job-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 8px;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
 }
 .job-card .company {
   color: var(--muted);
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 .job-card .meta {
   color: var(--muted);
   font-size: 0.9rem;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 .job-card .skills {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--ink);
   margin-bottom: 22px;
 }
@@ -250,37 +282,34 @@ body {
   margin-top: auto;
   width: fit-content;
 }
+
+/* Job detail */
 .detail-layout {
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: clamp(28px, 5vw, 60px);
+  border-radius: var(--radius-md);
+  padding: clamp(28px, 5vw, 56px);
   box-shadow: var(--shadow-soft);
 }
-.detail-layout .tag {
-  display: inline-block;
-  color: var(--teal);
-  background: var(--mint);
-  padding: 7px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
 .detail-layout h1 {
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
   margin: 18px 0 10px;
 }
 .detail-company {
   color: var(--muted);
   font-size: 1.1rem;
+  font-weight: 600;
 }
 .detail-section {
   margin-top: 40px;
 }
 .detail-section h2 {
   margin-bottom: 12px;
+  font-size: 1.5rem;
 }
 .detail-section p {
+  white-space: pre-line;
+  max-width: 70ch;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -290,13 +319,17 @@ body {
   gap: 8px;
 }
 .skill {
-  padding: 8px 12px;
+  padding: 8px 13px;
   background: var(--soft);
+  border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 0.85rem;
+  font-weight: 500;
 }
+
+/* Application form and list */
 .application-panel h1 {
-  font-size: 2.7rem;
+  font-size: clamp(2rem, 5vw, 2.7rem);
   margin-bottom: 8px;
 }
 .form-grid {
@@ -310,45 +343,69 @@ body {
 }
 .application-list {
   display: grid;
-  gap: 15px;
+  gap: 14px;
 }
 .application-card {
   min-width: 0;
-  background: #fff;
+  background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 22px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
   align-items: center;
   box-shadow: var(--shadow-soft);
-  transition: transform 0.2s var(--ease), border-color 0.2s ease;
-}
-.application-card:hover {
-  border-color: rgba(8, 127, 126, 0.35);
-  transform: translateY(-2px);
 }
 .application-card h3 {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 .application-card p {
   color: var(--muted);
   margin: 0;
 }
 .status {
-  padding: 7px 11px;
+  padding: 7px 12px;
   border-radius: 999px;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
   white-space: nowrap;
   background: var(--mint);
   color: var(--teal-dark);
 }
+/* Optional: add one of these classes next to .status in your JS to colour-code stages */
+/* Stage colours: JS adds one of these next to .status */
+.status.is-pending {
+  background: #fdf3dc;
+  color: #7a5300;
+}
+.status.is-review {
+  background: #e3ecff;
+  color: #1e40af;
+}
+.status.is-shortlisted {
+  background: #ece8ff;
+  color: #4b3bb0;
+}
+.status.is-interview {
+  background: #e0f2fe;
+  color: #075985;
+}
+.status.is-hired {
+  background: #e1f5ea;
+  color: #11603a;
+}
+.status.is-rejected {
+  background: #fbe9e9;
+  color: #9a2f2f;
+}
+
+/* Admin tables */
 .admin-table-wrap {
-  overflow-x: hidden;
+  overflow-x: auto;
+  background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
 }
 .admin-table {
   width: 100%;
@@ -358,104 +415,114 @@ body {
 .admin-table td {
   overflow-wrap: break-word;
   text-align: left;
-  padding: 14px 10px;
+  padding: 14px 14px;
   border-bottom: 1px solid var(--line);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
 }
 .admin-table th {
   color: var(--muted);
   background: var(--soft);
-  font-size: 0.76rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.admin-table tbody tr:hover td {
+  background: #f8faff;
 }
 .status-select {
-  padding: 8px 10px;
+  min-height: 40px;
+  padding: 8px 40px 8px 12px;
   border-radius: 8px;
+  font-size: 0.92rem;
+}
+.admin-table td .btn {
+  min-height: 40px;
+  padding: 8px 14px;
+  font-size: 0.92rem;
+}
+.admin-table td .btn + .btn {
+  margin-left: 8px;
 }
 .empty-state {
   color: var(--muted);
-  padding: 30px 0;
+  padding: 36px 0;
   text-align: center;
 }
-
-@keyframes pageIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (min-width: 651px) {
+  .admin-table tbody tr:last-child td {
+    border-bottom: 0;
   }
 }
 
-/* Mobile menu button - hidden on desktop */
+/* Mobile menu button: hidden on desktop */
 .mobile-menu-btn {
   display: none;
 }
 
 @media (max-width: 900px) {
-
-  body,
-  .app-shell,
-  .main-content {
-    background: #fff;
+  :root {
+    --bar-h: 64px;
   }
 
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* fixed top bar */
   .app-shell::before {
     content: "";
     position: fixed;
     inset: 0 0 auto;
-    height: 100px;
+    height: var(--bar-h);
     z-index: 800;
-    background: #fff;
+    background: var(--white);
     border-bottom: 1px solid var(--line);
   }
 
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
-
+  /* closed: just the hamburger square */
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 900;
-    width: 76px;
-    height: 76px;
+    width: var(--bar-h);
+    height: var(--bar-h);
     max-height: none;
     overflow: visible;
-    padding: 76px 28px 28px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 0;
-    box-shadow: 0 12px 30px rgba(16, 33, 43, 0.08);
+    padding: 0;
+    background: var(--white);
+    border: 0;
+    border-bottom: 1px solid var(--line);
     transition:
       width 0.25s ease,
-      height 0.3s ease,
-      border-radius 0.3s ease;
+      height 0.3s ease;
   }
 
+  /* open: a drawer with a dimmed page behind it */
   .sidebar.mobile-open {
-    width: min(100vw, 420px);
-    height: min(100vw, 420px);
-    border-bottom-right-radius: 100%;
+    width: min(86vw, 320px);
+    height: 100vh;
+    height: 100dvh;
+    padding: calc(var(--bar-h) + 12px) 18px 24px;
+    overflow-y: auto;
+    border-right: 1px solid var(--line);
+    box-shadow:
+      0 0 0 100vmax rgba(11, 31, 77, 0.38),
+      var(--shadow);
   }
 
   .sidebar .brand {
     position: fixed;
     top: 0;
-    left: 76px;
+    left: var(--bar-h);
     right: 0;
-    height: 76px;
+    height: var(--bar-h);
     z-index: 1300;
     display: flex;
     align-items: center;
     padding: 0 12px;
-    background: #fff;
+    background: var(--white);
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 8px 18px rgba(18, 37, 45, 0.06);
     white-space: nowrap;
     pointer-events: none;
   }
@@ -464,50 +531,48 @@ body {
   .mobile-menu-btn {
     display: block;
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1200;
+    top: 10px;
+    left: 10px;
+    z-index: 1400;
     visibility: visible;
     opacity: 1;
-
     border: 0;
-    background: #fff;
-    color: var(--teal);
-    font-size: 28px;
-    cursor: pointer;
+    background: transparent;
+    color: var(--ink);
+    font-size: 26px;
     line-height: 1;
     width: 44px;
     height: 44px;
     padding: 0;
-    border-radius: 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .mobile-menu-btn:hover {
+    background: var(--soft);
   }
 
-  /* Navigation hidden until hamburger is clicked */
+  /* Navigation hidden until the hamburger is clicked */
   .sidebar nav {
     display: none;
     grid-template-columns: 1fr;
-    gap: 7px;
-    margin-top: 8px;
-    overflow-x: visible;
+    gap: 6px;
+    margin-top: 0;
   }
-
-  /* Show navigation when menu is open */
   .sidebar.mobile-open nav {
     display: grid;
   }
-
   .sidebar nav a {
-    width: max-content;
+    width: auto;
     max-width: 100%;
+    padding: 13px 14px;
     white-space: normal;
   }
 
-  /* Logout hidden until menu is open */
+  /* Logout hidden until the menu is open */
   .sidebar-logout {
     display: none;
     margin-top: 10px;
   }
-
   .sidebar.mobile-open .sidebar-logout {
     display: block;
   }
@@ -519,11 +584,11 @@ body {
   }
 
   .main-content {
-    padding-top: 100px;
+    padding-top: calc(var(--bar-h) + 28px);
   }
 
   main section[id] {
-    scroll-margin-top: 100px;
+    scroll-margin-top: calc(var(--bar-h) + 16px);
   }
 
   .candidate-page .topbar,
@@ -531,16 +596,12 @@ body {
   .candidate-page #applyTitle,
   .candidate-page #jobDetails > h1 {
     position: sticky;
-    top: 76px;
+    top: var(--bar-h);
     z-index: 700;
-    background: #fff;
+    background: var(--soft);
   }
 
-  .candidate-page .topbar {
-    padding: 12px 0 16px;
-    margin-bottom: 20px;
-  }
-
+  .candidate-page .topbar,
   .admin-page .topbar {
     padding: 12px 0 16px;
     margin-bottom: 20px;
@@ -553,9 +614,14 @@ body {
 }
 
 @media (max-width: 650px) {
-
   .main-content {
-    padding: 30px 18px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 30px;
+  }
+
+  .panel {
+    padding: 22px 18px;
   }
 
   .search-panel,
@@ -586,7 +652,7 @@ body {
   #manageJobs .form-grid input,
   #manageJobs .form-grid select,
   #manageJobs .form-grid textarea {
-    padding: 11px 10px;
+    padding: 11px 12px;
   }
 
   .application-card {
@@ -608,7 +674,7 @@ body {
 
   .admin-table tr {
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     margin-bottom: 14px;
     padding: 8px 14px;
   }
@@ -631,7 +697,6 @@ body {
     color: var(--muted);
     font-size: 0.78rem;
     font-weight: 700;
-    text-transform: uppercase;
   }
 
   .admin-jobs-table td:nth-child(1)::before,
